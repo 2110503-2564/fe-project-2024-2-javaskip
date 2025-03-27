@@ -4,8 +4,8 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { getServerSession } from "next-auth";
+import { authOptions } from "@/libs/authOptions";
 
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export default function HomeBanner() {
   const [session, setSession] = useState(null);

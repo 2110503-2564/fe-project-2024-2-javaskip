@@ -5,12 +5,12 @@ import { LinearProgress } from "@mui/material";
 import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import getUserDashboard from "@/libs/getUserProfile";
+import getUserProfile from "@/libs/getUserProfile";
 
 export default async function Campground() {
   const campgrounds = getCampgrounds(50);
   const session = await getServerSession(authOptions);
-  const profile = await getUserDashboard(session.user.token);
+  const profile = await getUserProfile(session.user.token);
   if (!campgrounds) return null;
 
   return (

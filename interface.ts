@@ -1,17 +1,11 @@
-import { Decimal128 } from "mongoose";
-
 export interface CampgroundItem {
   _id: string;
   number: number;
   name: string;
-  cooradinate: string;
-  province: string;
-  postalcode: string;
+  address: string;
   telephone: string;
-  region: string;
   appointments: string[];
   picture: string;
-  price: Decimal128;
 }
 
 export interface CampgroundJson {
@@ -35,18 +29,6 @@ export interface AppointmentJson {
   pagination: Object;
   data: AppointmentItem[];
 }
-
-// export interface PaymentItem {
-//   _id: string;
-//   status: string;
-//   rent_date: Date;
-//   successful_payment_date: Date;
-//   submitted_slip_images: String[];
-//   successful_payment_slip_image: Object;
-//   campground: CampgroundItem;
-//   user: UserItem;
-//   appointment: Object;
-// }
 
 export interface Slip {
   _id: string,

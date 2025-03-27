@@ -12,13 +12,19 @@ export default function RegisterPage() {
   const [telephone, setTelephone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("Select your role here");
 
   const submit = () => {
-    if (name && telephone && email && password && role) {
+    if (name && telephone && email && password) {
       const postRegister = async () => {
-        await register(name, telephone, email, password, role);
+        await register(name, telephone, email, password, "user");
       };
+      
+      // console.log("Name:", name);
+      // console.log("Telephone:", telephone);
+      // console.log("Email:", email);
+      // console.log("Password:", password);
+      // console.log("Role:", "user");
+
       postRegister();
       alert("Successfully register!");
       router.push("/api/auth/signin");
@@ -26,6 +32,7 @@ export default function RegisterPage() {
       alert("Please fill in the missing field!");
     }
   };
+
   return (
     <main className="flex flex-col align-middle justify-center items-center w-[40%] mx-[30%] my-[5%] pb-5">
       <div>

@@ -55,7 +55,7 @@ export default function EditAppointmentPage() {
       };
       await editAppointment();
       alert("Successfully update your booking!");
-      router.push("/dashboard");
+      router.push("/myBooking");
     } else {
       alert("Please fill in the missing field!");
     }

@@ -26,34 +26,25 @@ export default function EditCampgroundPage() {
   }, [id]);
 
   const [name, setName] = useState("");
-  const [coordinate, setCoordinate] = useState("");
-  const [province, setProvince] = useState("");
-  const [postalcode, setPostalcode] = useState("");
+  const [address, setAddress] = useState("");
   const [telephone, setTelephone] = useState("");
-  const [region, setRegion] = useState("");
   const [picture, setPicture] = useState("");
 
   if (!session || !session.user.token) return null;
   const submit = () => {
     if (
       name &&
-      coordinate &&
-      picture &&
-      province &&
-      region &&
-      postalcode &&
-      telephone
+      address&&
+      telephone&&
+      picture
     ) {
       const editCampground = async () => {
         await updateCampground(
           id,
           session.user.token,
           name,
-          coordinate,
-          province,
-          postalcode,
+          address,
           telephone,
-          region,
           picture
         );
       };
@@ -87,21 +78,39 @@ export default function EditCampgroundPage() {
           onChange={(e) => setName(e.target.value)}
         ></input>
       </div>
+
       <div className="w-full my-10">
-        <label className="w-auto block text-gray-700" htmlFor="coor">
-          Coordinate
+        <label className="w-auto block text-gray-700" htmlFor="address">
+          Address
         </label>
         <input
           type="text"
           required
-          id="coor"
-          name="coor"
-          placeholder="Type the coordinate here"
+          id="address"
+          name="address"
+          placeholder="Type the address of campground here"
           className="bg-white border-[2px] border-gray-500 rounded-lg w-full py-2 px-4 mt-2 text-gray-700 focus:outline-none focus:border-emerald-500"
-          value={coordinate}
-          onChange={(e) => setCoordinate(e.target.value)}
+          value={address}
+          onChange={(e) => setPicture(e.target.value)}
         ></input>
       </div>
+      
+      <div className="w-full my-10">
+          <label className="w-auto block text-gray-700" htmlFor="tel">
+            Phone Number
+          </label>
+          <input
+            type="text"
+            required
+            id="tel"
+            name="tel"
+            placeholder="Type the phone number here"
+            className="bg-white border-[2px] border-gray-500 rounded-lg w-full py-2 px-4 mt-2 text-gray-700 focus:outline-none focus:border-emerald-500"
+            value={telephone}
+            onChange={(e) => setTelephone(e.target.value)}
+          ></input>
+      </div>
+
       <div className="w-full my-10">
         <label className="w-auto block text-gray-700" htmlFor="picture">
           Picture
@@ -117,80 +126,13 @@ export default function EditCampgroundPage() {
           onChange={(e) => setPicture(e.target.value)}
         ></input>
       </div>
-      <div className="flex my-10">
-        <div className="w-1/2">
-          <label className="w-full block text-gray-700" htmlFor="province">
-            Province
-          </label>
-          <input
-            type="text"
-            required
-            id="province"
-            name="province"
-            placeholder="Type the province here"
-            className="bg-white border-[2px] border-gray-500 rounded-lg w-full py-2 px-4 mt-2 text-gray-700 focus:outline-none focus:border-emerald-500"
-            value={province}
-            onChange={(e) => setProvince(e.target.value)}
-          ></input>
-        </div>
-        <div className="w-1/2 ml-5">
-          <label className="w-auto block text-gray-700" htmlFor="region">
-            Region
-          </label>
-          <input
-            type="text"
-            required
-            id="region"
-            name="region"
-            placeholder="Type the region here"
-            className="bg-white border-[2px] border-gray-500 rounded-lg w-full py-2 px-4 mt-2 text-gray-700 focus:outline-none focus:border-emerald-500"
-            value={region}
-            onChange={(e) => setRegion(e.target.value)}
-          ></input>
-        </div>
-      </div>
-      <div className="flex my-10">
-        <div className="w-1/2">
-          <label className="w-full block text-gray-700" htmlFor="postal">
-            Postal Code
-          </label>
-          <input
-            type="text"
-            required
-            id="postal"
-            name="postal"
-            placeholder="Type the postal code here"
-            className="bg-white border-[2px] border-gray-500 rounded-lg w-full py-2 px-4 mt-2 text-gray-700 focus:outline-none focus:border-emerald-500"
-            value={postalcode}
-            onChange={(e) => setPostalcode(e.target.value)}
-          ></input>
-        </div>
-        <div className="w-1/2 ml-5">
-          <label className="w-auto block text-gray-700" htmlFor="tel">
-            Phone Number
-          </label>
-          <input
-            type="text"
-            required
-            id="tel"
-            name="tel"
-            placeholder="Type the phone number here"
-            className="bg-white border-[2px] border-gray-500 rounded-lg w-full py-2 px-4 mt-2 text-gray-700 focus:outline-none focus:border-emerald-500"
-            value={telephone}
-            onChange={(e) => setTelephone(e.target.value)}
-          ></input>
-        </div>
-      </div>
       <div className="text-center">
         <button
           className="bg-white border-[2px] border-red-500 px-8 py-1 mr-10 text-red-500 font-medium rounded-full hover:bg-red-500 hover:text-white"
           onClick={() => {
             setName("");
-            setCoordinate("");
-            setProvince("");
-            setPostalcode("");
+            setAddress("");
             setTelephone("");
-            setRegion("");
             setPicture("");
           }}
         >

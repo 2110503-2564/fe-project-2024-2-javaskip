@@ -1,20 +1,14 @@
 export default async function createCampground(
   token: string,
   name: string,
-  coordinate: string,
-  province: string,
-  postalcode: string,
+  address : string,
   telephone: string,
-  region: string,
   picture: string
 ) {
   let bodyData = {
     name: name,
-    coordinate: coordinate,
-    province: province,
-    postalcode: postalcode,
+    address: address,
     telephone: telephone,
-    region: region,
     picture: picture,
   };
   console.log(bodyData);

@@ -2,9 +2,11 @@ import Image from "next/image";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { Link } from "@mui/material";
+import getUserDashboard from "@/libs/getUserProfile";
 
 export default async function TopMenu() {
   const session = await getServerSession(authOptions);
+  const profile = await getUserDashboard(session.user.token);
 
   return (
     <nav className="top-0 w-full h-[70px] bg-[#043873]  fixed flex flex-row justify-start items-center z-40 p-1 gap-x-3  drop-shadow-xl">
@@ -22,11 +24,16 @@ export default async function TopMenu() {
       <div className="ml-auto p-4 flex items-center">
         {session ? (
           <div className="flex flex-row gap-3">
-            <Link href="/campground" className="no-underline">
+            {profile.data.role !== "admin" ? (
+              <>
+              <Link href="/campground" className="no-underline">
               <button className="flex items-center h-full px-2 text-white text-lg">
                 <p className=" ">Book Now</p>
               </button>
             </Link>
+              </>
+            ) : null}
+            
             <Link href="/myBooking" className="no-underline">
               <button className="flex items-center h-full px-2 text-white text-lg">
                 <p className=" "> My Booking</p>

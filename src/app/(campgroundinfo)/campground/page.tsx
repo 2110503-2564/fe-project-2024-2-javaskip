@@ -15,7 +15,7 @@ export default async function Campground() {
 
   return (
     <main className="text-center p-5 mx-[8%]">
-      <div className="text-4xl font-bold m-10 text-left">Campground</div>
+      <div className="text-4xl font-bold m-10 mt-20 text-left">Campground</div>
 
       {profile.data.role == "admin" ? (
         <Link href="/campground/manage/add">

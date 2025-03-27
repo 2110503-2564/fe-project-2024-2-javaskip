@@ -31,7 +31,7 @@ export default async function AppointmentDetailPage({
       </div>
 
       <div className="text-center my-20">
-        <Link href={"/dashboard"}>
+        <Link href={"/booking"}>
           <button className="bg-white border-[2px] border-emerald-500 px-10 py-1 mr-10 text-emerald-500 font-medium rounded-full hover:bg-emerald-500 hover:text-white">
             Back
           </button>

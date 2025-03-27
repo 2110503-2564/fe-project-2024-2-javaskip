@@ -1,7 +1,7 @@
 import getCampgrounds from "@/libs/getCampgrounds";
 import CampgroundCatalog from "@/components/CampgroundCatalog";
 import { Suspense } from "react";
-import { LinearProgress } from "@mui/material";
+import { CircularProgress } from "@mui/material"; // Material-UI Spinner
 import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
@@ -27,10 +27,9 @@ export default async function Campground() {
 
       <Suspense
         fallback={
-          <p>
-            Loading...
-            <LinearProgress />
-          </p>
+          <div className="flex justify-center items-center h-40">
+            <CircularProgress color="primary" />
+          </div>
         }
       >
         <CampgroundCatalog campgroundJson={campgrounds} />

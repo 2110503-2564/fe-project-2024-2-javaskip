@@ -1,6 +1,6 @@
 export default async function getCampgrounds(limit?: number, page?: number) {
   // add timeout
-  await new Promise((resolve) => setTimeout(resolve, 5000));
+  await new Promise((resolve) => setTimeout(resolve, 300));
 
   const limitParam = limit ? `?limit=${limit}` : "";
   const pageParam = page ? `&page=${page}` : "";
@@ -11,7 +11,7 @@ export default async function getCampgrounds(limit?: number, page?: number) {
     );
     if (!response.ok) {
       console.log(response);
-      
+
       throw new Error("Failed to fetch campgrounds");
     }
     return await response.json();

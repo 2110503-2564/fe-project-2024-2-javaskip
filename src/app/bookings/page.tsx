@@ -42,19 +42,19 @@ export default function AddAppointmentPage() {
         console.log("aid : ", typeof aid);
         console.log("------------------------------------");
 
-        const createTransactionResponse = (await createTransaction(
-          session.user.token,
-          aid
-        )) as Response;
-        console.log(createTransactionResponse);
+        // const createTransactionResponse = (await createTransaction(
+        //   session.user.token,
+        //   aid
+        // )) as Response;
+        // console.log(createTransactionResponse);
 
-        if (!createTransactionResponse) {
-          throw new Error("Failed to submit create Transaction");
-        }
+        // if (!createTransactionResponse) {
+        //   throw new Error("Failed to submit create Transaction");
+        // }
 
         alert("Successfully booked!");
 
-        router.push("/dashboard");
+        router.push("/myBooking");
       } catch (err) {
         console.log(err);
       }

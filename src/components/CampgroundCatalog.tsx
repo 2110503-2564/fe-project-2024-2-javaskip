@@ -7,7 +7,6 @@ export default async function CampgroundCatalog({
 }: {
   campgroundJson: any;
 }) {
-  
   const campgroundJsonReady = await campgroundJson;
 
   return (
@@ -21,7 +20,6 @@ export default async function CampgroundCatalog({
           <Card
             campgroundName={campgroundItem.name}
             imgSrc={campgroundItem.picture}
-            campgroundAddress={campgroundItem.address}
           />
         </Link>
       ))}

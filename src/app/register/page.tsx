@@ -19,11 +19,11 @@ export default function RegisterPage() {
         await register(name, telephone, email, password, "user");
       };
 
-      // console.log("Name:", name);
-      // console.log("Telephone:", telephone);
-      // console.log("Email:", email);
-      // console.log("Password:", password);
-      // console.log("Role:", "user");
+      console.log("Name:", name);
+      console.log("Telephone:", telephone);
+      console.log("Email:", email);
+      console.log("Password:", password);
+      console.log("Role:", "user");
 
       postRegister();
       alert("Successfully register!");

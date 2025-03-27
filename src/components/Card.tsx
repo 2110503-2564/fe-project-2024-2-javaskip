@@ -4,11 +4,9 @@ import InteractiveCard from "./InteractiveCard";
 export default function Card({
   campgroundName,
   imgSrc,
-  campgroundAddress,
 }: {
   campgroundName: string;
   imgSrc: string;
-  campgroundAddress: string;
 }) {
   return (
     <InteractiveCard>

@@ -3,7 +3,7 @@ import getCampground from "@/libs/getCampground";
 import Link from "next/link";
 import { getServerSession } from "next-auth";
 import getUserProfile from "@/libs/getUserProfile";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/libs/authOptions";
 
 // Define correct types
 interface PageProps {

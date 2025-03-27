@@ -13,6 +13,7 @@ export default function AddCampgroundPage() {
   const [address, setAddress] = useState("");
   const [telephone, setTelephone] = useState("");
   const [picture, setPicture] = useState("");
+  
 
   if (!session || !session.user.token) return null;
   const submit = () => {

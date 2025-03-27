@@ -8,7 +8,7 @@ export default async function createCampground(
   let bodyData = {
     name: name,
     address: address,
-    telephone: telephone,
+    tel: telephone,
     picture: picture,
   };
   console.log(bodyData);

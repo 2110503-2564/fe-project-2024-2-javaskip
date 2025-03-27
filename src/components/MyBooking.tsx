@@ -1,15 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Session } from "next-auth";
-import TransactionCard from "./BookingCard";
 import { AppointmentJson } from "interface";
-import Button from "@mui/material/Button";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
-import { ListItemText } from "@mui/material";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Prompt } from "next/font/google";
 import BookingCard from "@/components/BookingCard";
 import { AppointmentItem } from "interface";
@@ -31,36 +23,6 @@ export default function MyBooking({
 }) {
   const appointmentJsonReady = appointmentJson;
 
-  // const [statusFilter, setStatusFilter] = useState("Default");
-  // const statusList = [
-  //   "Default",
-  //   "WAITING",
-  //   "VERIFYING",
-  //   "REJECTED",
-  //   "COMPLETED",
-  // ];
-
-  //For mui drop down list
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
-  const open = Boolean(anchorEl);
-  const handleClickListItem = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMenuItemClick = (
-    event: React.MouseEvent<HTMLElement>,
-    index: number
-  ) => {
-    setSelectedIndex(index);
-    // setStatusFilter(statusList[index]);
-    setAnchorEl(null);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
   return (
     <main className="text-center">
       <div className="rounded-[20px] items-center justify-center border border-solid pb-3">
@@ -77,8 +39,6 @@ export default function MyBooking({
             user={AppointmentItems.user}
             campground={AppointmentItems.campground}
             date={new Date(AppointmentItems.apptDate)}
-            // status={AppointmentItems.status}
-            // submitImage={AppointmentItems.submitted_slip_images}
             role={role}
           />
         ))}

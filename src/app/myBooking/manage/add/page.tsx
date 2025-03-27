@@ -1,15 +1,9 @@
 "use client";
 
 import createAppointment from "@/libs/createAppointment";
-// import createTransaction from "@/libs/createTransaction";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
-
-interface ResponseData {
-  message: string;
-  // include other properties
-}
 
 export default function BookingPage() {
   const router = useRouter();
@@ -38,33 +32,13 @@ export default function BookingPage() {
             }
           };
 
-          // const transaction = async () => {
-            // const response = (await createTransaction(
-            //   session.user.token,
-            //   id
-            // )) as Response;
-            // if (!response) {
-            //   throw new Error("Failed to submit create Transaction");
-            // }
-
-            // const responseData:ResponseData = await response.json();
-
-            // if (response && response.status !== 200) {
-            //   alert(responseData.message);
-            //   alert('Not Success')
-            //   return;
-            // }
-
-          //   alert("Successfully booked!");
-          // };
           booking();
-          // transaction();
           router.push("/myBooking");
         } else {
           alert("Please fill in the missing field!");
         }
       } catch (error) {
-        // alert(`${error}, response`);
+        alert(`${error}, response`);
       }
     }
   };

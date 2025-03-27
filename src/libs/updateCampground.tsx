@@ -2,7 +2,7 @@ export default async function updateCampground(
   id: string,
   token: string,
   name: string,
-  address:string,
+  address: string,
   telephone: string,
   picture: string
 ) {

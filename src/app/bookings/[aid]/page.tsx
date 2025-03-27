@@ -2,7 +2,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import getAppointment from "@/libs/getAppointment";
 import Link from "next/link";
-import getUserDashboard from "@/libs/getUserProfile";
+import getUserProfile from "@/libs/getUserProfile";
 
 export default async function AppointmentDetailPage({
   params,
@@ -10,7 +10,7 @@ export default async function AppointmentDetailPage({
   params: { aid: string };
 }) {
   const session = await getServerSession(authOptions);
-  const profile = await getUserDashboard(session.user.token);
+  const profile = await getUserProfile(session.user.token);
   if (!session || !session.user.token) return null;
   const apptDetail = await getAppointment(params.aid, session.user.token);
 

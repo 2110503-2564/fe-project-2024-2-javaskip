@@ -1,14 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
 import AppointmentCard from "./AppointmentCard";
-import getUserDashboard from "@/libs/getUserProfile";
+import getUserProfile from "@/libs/getUserProfile";
 import getAppointments from "@/libs/getAppointments";
 import { Session } from "next-auth";
 import { AppointmentItem, AppointmentJson } from "interface";
-import { CircularProgress } from "@mui/material"; // Material-UI Spinner
+import { CircularProgress } from "@mui/material";
 
 export default function AppointmentCatalog({
-  appointmentJson,
+
   session,
 }: {
   appointmentJson: AppointmentJson;
@@ -22,7 +22,7 @@ export default function AppointmentCatalog({
     const setData = async () => {
       setLoading(true);
       try {
-        await getUserDashboard(session.user.token); // Fetch user details (not stored)
+        await getUserProfile(session.user.token);
         const appointment = await getAppointments(session.user.token);
         setAppointmentJsonReady(appointment);
       } catch (error) {

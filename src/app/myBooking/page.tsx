@@ -1,9 +1,8 @@
-import MyBooking from "@/components/MyBooking";
 import getAppointments from "@/libs/getAppointments";
 import { Skeleton } from "@mui/material";
 import { getServerSession } from "next-auth";
 import { Suspense } from "react";
-import getUserDashboard from "../../libs/getUserProfile";
+import getUserProfile from "../../libs/getUserProfile";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import AppointmentCatalog from "@/components/AppointmentCatalog";
 
@@ -11,8 +10,7 @@ export default async function MyBookingPage() {
   const session = await getServerSession(authOptions);
   if (!session || !session.user.token) return null;
 
-  const profile = await getUserDashboard(session.user.token);
-  const createdAt = new Date(profile.data.createdAt);
+  const profile = await getUserProfile(session.user.token);
   const appointment = await getAppointments(session.user.token);
 
   return (

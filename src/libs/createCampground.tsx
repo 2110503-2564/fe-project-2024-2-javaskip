@@ -33,5 +33,5 @@ export default async function createCampground(
     throw new Error(responseData.message || "Cannot create campground");
   }
 
-  return responseData; // Successfully created
+  return responseData; 
 }

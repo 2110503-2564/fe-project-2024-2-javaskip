@@ -18,7 +18,7 @@ export default function RegisterPage() {
       const postRegister = async () => {
         await register(name, telephone, email, password, "user");
       };
-      
+
       // console.log("Name:", name);
       // console.log("Telephone:", telephone);
       // console.log("Email:", email);
@@ -30,6 +30,19 @@ export default function RegisterPage() {
       router.push("/api/auth/signin");
     } else {
       alert("Please fill in the missing field!");
+    }
+  };
+
+  const togglePassword = () => {
+    var passType: HTMLInputElement | null = document.getElementById(
+      "password"
+    ) as HTMLInputElement;
+    if (passType !== null) {
+      if (passType.type === "password") {
+        passType.type = "text";
+      } else {
+        passType.type = "password";
+      }
     }
   };
 
@@ -118,16 +131,4 @@ export default function RegisterPage() {
       </div>
     </main>
   );
-}
-function togglePassword(): void {
-  var x: HTMLInputElement | null = document.getElementById(
-    "password"
-  ) as HTMLInputElement;
-  if (x !== null) {
-    if (x.type === "password") {
-      x.type = "text";
-    } else {
-      x.type = "password";
-    }
-  }
 }

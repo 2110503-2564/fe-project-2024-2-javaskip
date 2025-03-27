@@ -53,7 +53,7 @@ export default function TopMenu() {
 
             <Link href="/myBooking" className="no-underline">
               <button className="flex items-center h-full px-2 text-white text-lg">
-                <p className=" ">My Booking</p>
+                <p className=" ">Booking</p>
               </button>
             </Link>
 

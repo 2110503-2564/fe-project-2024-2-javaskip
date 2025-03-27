@@ -1,14 +1,10 @@
 "use client";
 
-import getAppointment from "@/libs/getAppointment";
-import getAppointments from "@/libs/getAppointments";
 import updateAppointment from "@/libs/updateAppointment";
 import CampGroundSelection from "@/components/CampGroundSelection";
-// import CurrentAppointmentShower from "@/components/CurrentAppointmentShower";
 import { useSession } from "next-auth/react";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { AppointmentItem } from "interface";
 
 export default function EditAppointmentPage() {
   const router = useRouter();
@@ -25,18 +21,6 @@ export default function EditAppointmentPage() {
     setSelectedCampground(newOption);
   };
   {
-    /*
-  const [appointmentJsonReady, setAppointmentJsonReady] =
-    useState<AppointmentItem>();
-  useEffect(() => {
-    const setData = async () => {
-      const appointment = await getAppointment(id, session.user.token);
-      console.log(appointment);
-      setAppointmentJsonReady(appointment);
-    };
-    setData();
-  }, []);
-  */
   }
 
   if (!session || !session.user.token) return null;
@@ -51,7 +35,6 @@ export default function EditAppointmentPage() {
           selectedCampground,
           date
         );
-        //alert(JSON.stringify(response));
       };
       await editAppointment();
       alert("Successfully update your booking!");
@@ -66,7 +49,6 @@ export default function EditAppointmentPage() {
       <div className="text-4xl font-bold mt-[8%] ">
         Edit Appointment : {cname}
       </div>
-      {/* <CurrentAppointmentShower appointment={appointmentJsonReady} /> */}
       <div className="w-full my-10">
         <label className="w-auto block text-gray-700" htmlFor="name">
           Campground

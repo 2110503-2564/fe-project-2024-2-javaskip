@@ -5,7 +5,6 @@ import CampGroundSelection from "@/components/CampGroundSelection";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-// import createTransaction from "@/libs/createTransaction";
 
 export default function AddAppointmentPage() {
   const router = useRouter();
@@ -22,7 +21,6 @@ export default function AddAppointmentPage() {
   if (!session || !session.user.token) return null;
 
   const submit = async () => {
-    console.log(selectedCampground, date);
     if (selectedCampground && date) {
       try {
         const createApptResponse = await createAppointment(
@@ -35,22 +33,10 @@ export default function AddAppointmentPage() {
           throw new Error("Failed to submit create Appointment form");
         }
 
-        // Directly parse the JSON from the response here
         const createApptResponseData = await createApptResponse.json();
-        console.log(createApptResponseData);
-        console.log("------------------------------------");
 
         const aid = createApptResponseData.data._id;
         setAppointmentID(aid);
-        console.log("aid : ", typeof aid);
-        console.log("------------------------------------");
-
-        // If you were using transactions, you'd handle that here
-        // const createTransactionResponse = await createTransaction(
-        //   session.user.token,
-        //   aid
-        // );
-        // console.log(createTransactionResponse);
 
         alert("Successfully booked!");
         router.push("/myBooking");

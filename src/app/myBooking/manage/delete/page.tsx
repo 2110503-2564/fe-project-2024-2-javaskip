@@ -1,4 +1,5 @@
 "use client";
+
 import deleteAppoinment from "@/libs/deleteAppoinment";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";

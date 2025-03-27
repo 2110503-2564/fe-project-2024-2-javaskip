@@ -40,7 +40,7 @@ params }: { params: { cid: string } }) {
                       <span className="font-light">Tel :</span> {campgroundDetail.data.tel}
                   </p>
 
-                  {/* ปุ่มต่าง ๆ */}
+                  
                   <div className="flex gap-4 flex-col">
                       <Link
                           href="/bookings"

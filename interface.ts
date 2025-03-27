@@ -30,19 +30,19 @@ export interface AppointmentJson {
   data: AppointmentItem[];
 }
 
-export interface Slip {
-  _id: string,
-  slip_image: Buffer;
-  submit_time: Date;
-  payment_id: string;
-}
+// export interface Slip {
+//   _id: string,
+//   slip_image: Buffer;
+//   submit_time: Date;
+//   payment_id: string;
+// }
 
-export interface PaymentJson {
-  success: boolean;
-  count: number;
-  pagination: Object;
-  data: PaymentItem[];
-}
+// export interface PaymentJson {
+//   success: boolean;
+//   count: number;
+//   pagination: Object;
+//   data: PaymentItem[];
+// }
 
 export interface UserItem {
   _id: string;
@@ -53,8 +53,8 @@ export interface UserItem {
   createdAt: Date;
 }
 
-export interface OnePaymentJson{
-  success: boolean;
-  data: PaymentItem;
-  campgroundPrice: string;
-}
+// export interface OnePaymentJson{
+//   success: boolean;
+//   data: PaymentItem;
+//   campgroundPrice: string;
+// }

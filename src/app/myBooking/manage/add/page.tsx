@@ -38,14 +38,14 @@ export default function BookingPage() {
             }
           };
 
-          const transaction = async () => {
-            const response = (await createTransaction(
-              session.user.token,
-              id
-            )) as Response;
-            if (!response) {
-              throw new Error("Failed to submit create Transaction");
-            }
+          // const transaction = async () => {
+            // const response = (await createTransaction(
+            //   session.user.token,
+            //   id
+            // )) as Response;
+            // if (!response) {
+            //   throw new Error("Failed to submit create Transaction");
+            // }
 
             // const responseData:ResponseData = await response.json();
 
@@ -55,10 +55,10 @@ export default function BookingPage() {
             //   return;
             // }
 
-            alert("Successfully booked!");
-          };
+          //   alert("Successfully booked!");
+          // };
           booking();
-          transaction();
+          // transaction();
           router.push("/myBooking");
         } else {
           alert("Please fill in the missing field!");

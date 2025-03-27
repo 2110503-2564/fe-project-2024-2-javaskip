@@ -7,7 +7,7 @@ import { getServerSession } from "next-auth";
 
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
-function HomeBanner() {
+export default function HomeBanner() {
   const [session, setSession] = useState(null);
   useEffect(() => {
     const fetchSession = async () => {
@@ -53,28 +53,15 @@ function HomeBanner() {
 
       {/* Button Container */}
       <div className="absolute bottom-10 right-10 z-20">
-        {session ? (
-          <Link href="/campground">
-            <button
-              className="bg-[#FFE492] text-[#043873] text-xl font-semibold px-6 py-3 rounded-lg shadow-md 
+        <Link href="/campground">
+          <button
+            className="bg-[#FFE492] text-[#043873] text-xl font-semibold px-6 py-3 rounded-lg shadow-md 
             hover:bg-[#FFD966] transition-all duration-300 ease-in-out"
-            >
-              Select your Campground NOW!
-            </button>
-          </Link>
-        ) : (
-          <Link href="/api/auth/signin">
-            <button
-              className="bg-[#FFE492] text-[#043873] text-xl font-semibold px-6 py-3 rounded-lg shadow-md 
-            hover:bg-[#FFD966] transition-all duration-300 ease-in-out"
-            >
-              Select your Campground NOW!
-            </button>
-          </Link>
-        )}
+          >
+            Select your Campground NOW!
+          </button>
+        </Link>
       </div>
     </div>
   );
 }
-
-export default HomeBanner;

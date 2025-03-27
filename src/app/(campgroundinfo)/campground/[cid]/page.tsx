@@ -40,14 +40,53 @@ export default async function CampgroundDetailPage({ params }: PageProps) {
             <span className="font-light">Tel :</span> {campgroundDetail.data.tel}
           </p>
 
-          <div className="flex gap-4 flex-col">
-            {profile && profile.data.role !== "admin" ? (
-              <Link
-                href="/bookings"
-                className="text-center px-2 py-1 bg-[#043873] text-[#FFE492] font-semibold rounded shadow hover:bg-blue-700 transition"
-              >
-                Make Booking
-              </Link>
+                  <h2 className="text-3xl font-bold">{campgroundDetail.data.name}</h2>
+
+                  <p className="text-lg font-semibold">
+                      <span className="text-xl font-medium">Address :</span> {campgroundDetail.data.address}
+                  </p>
+
+                  <p className="text-lg font-semibold">
+                      <span className="font-light">Tel :</span> {campgroundDetail.data.tel}
+                  </p>
+
+                  
+                  <div className="flex gap-4 flex-col">
+                    {profile.data.role !== "admin" ? (
+                      <Link
+                        href="/bookings"
+                        className="text-center px-2 py-1 bg-[#043873] text-[#FFE492] font-semibold rounded shadow hover:bg-blue-700 transition"
+                      >
+                        Make Booking
+                      </Link>
+                    ) : null}
+                      <Link
+                          href="/campground"
+                          className="text-center px-2 py-1 bg-[#FFE492] text-[#043873] font-semibold rounded shadow hover:bg-[#eace7c] transition"
+                      >
+                          Back
+                      </Link>
+                  </div>
+              </div>
+          </div>
+          <div className="fixed bottom-28 items-center">
+            {profile.data.role == "admin" ? (
+              <>
+                <Link
+                  href={`/campground/manage/edit?id=${params.cid}&name=${campgroundDetail.data.name}`}
+                >
+                  <button className="border-[2px] border-blue-800 bg-blue-800 px-10 py-1 ml-10 mr-10 text-white font-medium rounded-full hover:bg-white hover:text-blue-800">
+                    Edit
+                  </button>
+                </Link>
+                <Link
+                  href={`/campground/manage/delete?id=${params.cid}&name=${campgroundDetail.data.name}`}
+                >
+                  <button className="border-[2px] border-red-800 bg-red-800 px-10 py-1 text-white font-medium rounded-full hover:bg-white hover:text-red-800">
+                    Delete
+                  </button>
+                </Link>
+              </>
             ) : null}
             <Link
               href="/campground"

@@ -114,7 +114,7 @@ export default function RegisterPage() {
 
         <div className="text-center flex flex-row gap-4">
           <button
-            className="bg-gray-400 px-10 py-1 my-5 text-white font-medium rounded-full"
+            className="bg-gray-500 border-[2px] border-gray-400 text-white hover:bg-emerald-500 hover:text-white hover:border-emerald-300 px-10 py-1 my-5 font-medium rounded-full"
             onClick={submit}
           >
             Sign up

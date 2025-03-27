@@ -1,22 +1,22 @@
-"use client"; // Make sure this is a client component
+"use client";
 
-import { useSession } from "next-auth/react";  // Use this hook for session
+import { useSession } from "next-auth/react";
 import Image from "next/image";
-import Link from "next/link";  // Use next Link instead of material-ui Link
-import getUserProfile from "@/libs/getUserProfile";  // Make sure this is working as expected
+import Link from "next/link"; 
+import getUserProfile from "@/libs/getUserProfile";  
 import { useEffect, useState } from "react";
 
 export default function TopMenu() {
-  const { data: session } = useSession();  // Get session using next-auth/react hook
+  const { data: session } = useSession(); 
   const [profile, setProfile] = useState<any>(null);
 
   useEffect(() => {
     if (session) {
-      // Fetch profile only when session is available
+      
       const fetchProfile = async () => {
         try {
           const profileData = await getUserProfile(session.user.token);
-          setProfile(profileData);  // Store the profile data in the state
+          setProfile(profileData);  
         } catch (error) {
           console.error("Error fetching user profile:", error);
         }
@@ -42,7 +42,7 @@ export default function TopMenu() {
       <div className="ml-auto p-4 flex items-center">
         {session ? (
           <div className="flex flex-row gap-3">
-            {/* If user is not admin, show the "Book Now" button */}
+
             {profile && profile.data.role !== "admin" && (
               <Link href="/campground" className="no-underline">
                 <button className="flex items-center h-full px-2 text-white text-lg">
@@ -51,14 +51,12 @@ export default function TopMenu() {
               </Link>
             )}
 
-            {/* "My Booking" button */}
             <Link href="/myBooking" className="no-underline">
               <button className="flex items-center h-full px-2 text-white text-lg">
                 <p className=" ">My Booking</p>
               </button>
             </Link>
 
-            {/* LogOut button */}
             <Link href="/api/auth/signout" className="no-underline">
               <div className="bg-[#FFE492] text-[#043873] font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-[#FFD966] transition-all duration-300 ease-in-out">
                 LogOut

@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import AppointmentCard from "./AppointmentCard";
 import getUserDashboard from "@/libs/getUserProfile";
 import getAppointments from "@/libs/getAppointments";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { Session, getServerSession } from "next-auth";
+import { Session } from "next-auth";
 import { AppointmentItem, AppointmentJson } from "interface";
+import { CircularProgress } from "@mui/material"; // Material-UI Spinner
 
 export default function AppointmentCatalog({
   appointmentJson,
@@ -15,20 +15,32 @@ export default function AppointmentCatalog({
   session: Session;
 }) {
   const [appointmentJsonReady, setAppointmentJsonReady] =
-    useState<AppointmentJson>();
+    useState<AppointmentJson | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const setData = async () => {
-      const profile = await getUserDashboard(session.user.token);
-      const appointment = await getAppointments(session.user.token);
-      setAppointmentJsonReady(appointment);
+      setLoading(true);
+      try {
+        await getUserDashboard(session.user.token); // Fetch user details (not stored)
+        const appointment = await getAppointments(session.user.token);
+        setAppointmentJsonReady(appointment);
+      } catch (error) {
+        console.error("Error fetching appointments:", error);
+      } finally {
+        setLoading(false);
+      }
     };
     setData();
   }, [session.user.token]);
 
   return (
-    <div className="block place-items-start justify-start mx-10">
-      {appointmentJsonReady && appointmentJsonReady.data.length > 0 ? (
+    <div className="mx-10">
+      {loading ? (
+        <div className="flex justify-center items-center h-40">
+          <CircularProgress color="primary" />
+        </div>
+      ) : appointmentJsonReady && appointmentJsonReady.data.length > 0 ? (
         appointmentJsonReady.data.map((appointmentItem: AppointmentItem) => (
           <AppointmentCard
             key={appointmentItem._id}
@@ -39,7 +51,9 @@ export default function AppointmentCatalog({
           />
         ))
       ) : (
-        <div className="text-xl">You have not made any booking</div>
+        <div className="text-xl text-gray-600 text-center">
+          You have not made any booking
+        </div>
       )}
     </div>
   );

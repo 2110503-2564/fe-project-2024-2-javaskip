@@ -22,7 +22,7 @@ export default async function MyBookingPage() {
 
       <div className="bg-slate-200 flex flex-col justify-center px-4 p-5 text-left rounded-2xl">
         <div className="text-3xl m-3 font-medium">{profile.data.name}</div>
-        <table className="table-auto border-collapse border-separate border-spacing-3">
+        <table className="table-auto border-separate border-spacing-3">
           <tbody>
             <tr>
               <td>Email: </td>

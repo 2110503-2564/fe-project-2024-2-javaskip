@@ -52,7 +52,7 @@ params }: { params: { cid: string } }) {
                     ) : null}
                       <Link
                           href="/campground"
-                          className="text-center px-2 py-1 bg-[#FFE492] text-[#043873] font-semibold rounded shadow hover:bg-gray-600 transition"
+                          className="text-center px-2 py-1 bg-[#FFE492] text-[#043873] font-semibold rounded shadow hover:bg-[#eace7c] transition"
                       >
                           Back
                       </Link>

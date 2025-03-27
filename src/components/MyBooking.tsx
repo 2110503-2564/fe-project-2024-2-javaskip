@@ -35,11 +35,9 @@ export default function MyBooking({
         {appointmentJsonReady.data.map((AppointmentItems: AppointmentItem) => (
           <BookingCard
             key={AppointmentItems._id}
-            tid={AppointmentItems._id}
             user={AppointmentItems.user}
             campground={AppointmentItems.campground}
             date={new Date(AppointmentItems.apptDate)}
-            role={role}
           />
         ))}
       </div>

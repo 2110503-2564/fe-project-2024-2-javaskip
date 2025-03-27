@@ -91,7 +91,7 @@ export default function EditCampgroundPage() {
           placeholder="Type the address of campground here"
           className="bg-white border-[2px] border-gray-500 rounded-lg w-full py-2 px-4 mt-2 text-gray-700 focus:outline-none focus:border-emerald-500"
           value={address}
-          onChange={(e) => setPicture(e.target.value)}
+          onChange={(e) => setAddress(e.target.value)}
         ></input>
       </div>
       

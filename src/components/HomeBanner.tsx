@@ -1,10 +1,22 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { getServerSession } from "next-auth";
+
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 function HomeBanner() {
+  const [session, setSession] = useState(null);
+  useEffect(() => {
+    const fetchSession = async () => {
+      const sessionData = await getServerSession(authOptions);
+      setSession(sessionData);
+    };
+    fetchSession();
+  }, []);
+
   const [currentCoverIndex, setCurrentCoverIndex] = useState(0);
   const bannerCoverSrc = [
     "/img/cover4.png",
@@ -41,14 +53,25 @@ function HomeBanner() {
 
       {/* Button Container */}
       <div className="absolute bottom-10 right-10 z-20">
-        <Link href="/campground">
-          <button
-            className="bg-[#FFE492] text-[#043873] text-xl font-semibold px-6 py-3 rounded-lg shadow-md 
+        {session ? (
+          <Link href="/campground">
+            <button
+              className="bg-[#FFE492] text-[#043873] text-xl font-semibold px-6 py-3 rounded-lg shadow-md 
             hover:bg-[#FFD966] transition-all duration-300 ease-in-out"
-          >
-            Select your Campground NOW!
-          </button>
-        </Link>
+            >
+              Select your Campground NOW!
+            </button>
+          </Link>
+        ) : (
+          <Link href="/api/auth/signin">
+            <button
+              className="bg-[#FFE492] text-[#043873] text-xl font-semibold px-6 py-3 rounded-lg shadow-md 
+            hover:bg-[#FFD966] transition-all duration-300 ease-in-out"
+            >
+              Select your Campground NOW!
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );

@@ -35,7 +35,7 @@ export default async function MyBookingPage() {
             </div>
             <div>
               <span className="font-semibold">Telephone:</span>{" "}
-              {profile.data.tel}
+              {profile.data.telephone}
             </div>
           </div>
         </div>

@@ -11,7 +11,8 @@ export default async function createCampground(
     tel: telephone,
     picture: picture,
   };
-  console.log(bodyData);
+  console.log("Request Body:", bodyData);
+
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/campgrounds/`,
     {
@@ -24,9 +25,13 @@ export default async function createCampground(
     }
   );
 
+  const responseData = await response.json();
+
   if (!response.ok) {
-    throw new Error("Cannot fetch campground");
+
+    alert(responseData.message);
+    throw new Error(responseData.message || "Cannot create campground");
   }
 
-  return await response.json();
+  return responseData; // Successfully created
 }

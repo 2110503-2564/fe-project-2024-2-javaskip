@@ -59,7 +59,7 @@ export default function BookingPage() {
           };
           booking();
           transaction();
-          router.push("/dashboard");
+          router.push("/myBooking");
         } else {
           alert("Please fill in the missing field!");
         }

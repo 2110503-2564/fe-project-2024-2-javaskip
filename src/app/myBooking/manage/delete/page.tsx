@@ -17,7 +17,7 @@ export default function DeleteAppointmentPage() {
     };
     await handleDelete();
     alert("Successfully deleted!");
-    router.push("/dashboard");
+    router.push("/myBooking");
   };
 
   return (

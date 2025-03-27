@@ -42,6 +42,7 @@ export default function AddCampgroundPage() {
   return (
     <main className="text-left mx-[20%] pb-5">
       <div className="text-4xl font-bold mt-[8%] ">Add new campground</div>
+    
       <div className="w-full my-10">
         <label className="w-auto block text-gray-700" htmlFor="name">
           Name
@@ -70,7 +71,7 @@ export default function AddCampgroundPage() {
           placeholder="Type the address of campground here"
           className="bg-white border-[2px] border-gray-500 rounded-lg w-full py-2 px-4 mt-2 text-gray-700 focus:outline-none focus:border-emerald-500"
           value={address}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setAddress(e.target.value)}
         ></input>
       </div>
 

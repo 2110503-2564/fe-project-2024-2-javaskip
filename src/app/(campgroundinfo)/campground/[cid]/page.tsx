@@ -42,13 +42,14 @@ params }: { params: { cid: string } }) {
 
                   
                   <div className="flex gap-4 flex-col">
+                    {profile.data.role !== "admin" ? (
                       <Link
-                          href="/bookings"
-                          className="text-center px-2 py-1 bg-[#043873] text-[#FFE492] font-semibold rounded shadow hover:bg-blue-700 transition"
+                        href="/bookings"
+                        className="text-center px-2 py-1 bg-[#043873] text-[#FFE492] font-semibold rounded shadow hover:bg-blue-700 transition"
                       >
-                          Make Booking
+                        Make Booking
                       </Link>
-
+                    ) : null}
                       <Link
                           href="/campground"
                           className="text-center px-2 py-1 bg-[#FFE492] text-[#043873] font-semibold rounded shadow hover:bg-gray-600 transition"

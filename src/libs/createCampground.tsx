@@ -1,7 +1,7 @@
 export default async function createCampground(
   token: string,
   name: string,
-  address : string,
+  address: string,
   telephone: string,
   picture: string
 ) {

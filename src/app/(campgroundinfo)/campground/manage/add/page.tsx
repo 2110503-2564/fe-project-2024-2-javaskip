@@ -16,12 +16,7 @@ export default function AddCampgroundPage() {
 
   if (!session || !session.user.token) return null;
   const submit = () => {
-    if (
-      name &&
-      address&&
-      telephone&&
-      picture
-    ) {
+    if (name && address && telephone && picture) {
       const addCampground = async () => {
         await createCampground(
           session.user.token,
@@ -42,7 +37,7 @@ export default function AddCampgroundPage() {
   return (
     <main className="text-left mx-[20%] pb-5">
       <div className="text-4xl font-bold mt-[8%] ">Add new campground</div>
-    
+
       <div className="w-full my-10">
         <label className="w-auto block text-gray-700" htmlFor="name">
           Name
@@ -76,21 +71,21 @@ export default function AddCampgroundPage() {
       </div>
 
       <div className="w-full my-10">
-          <label className="w-auto block text-gray-700" htmlFor="tel">
-            Phone Number
-          </label>
-          <input
-            type="text"
-            required
-            id="tel"
-            name="tel"
-            placeholder="Type the phone number here"
-            className="bg-white border-[2px] border-gray-500 rounded-lg w-full py-2 px-4 mt-2 text-gray-700 focus:outline-none focus:border-emerald-500"
-            value={telephone}
-            onChange={(e) => setTelephone(e.target.value)}
-          ></input>
+        <label className="w-auto block text-gray-700" htmlFor="tel">
+          Phone Number
+        </label>
+        <input
+          type="text"
+          required
+          id="tel"
+          name="tel"
+          placeholder="Type the phone number here"
+          className="bg-white border-[2px] border-gray-500 rounded-lg w-full py-2 px-4 mt-2 text-gray-700 focus:outline-none focus:border-emerald-500"
+          value={telephone}
+          onChange={(e) => setTelephone(e.target.value)}
+        ></input>
       </div>
-      
+
       <div className="w-full my-10">
         <label className="w-auto block text-gray-700" htmlFor="picture">
           Picture
@@ -106,7 +101,7 @@ export default function AddCampgroundPage() {
           onChange={(e) => setPicture(e.target.value)}
         ></input>
       </div>
-      
+
       <div className="text-center">
         <button
           className="bg-white border-[2px] border-red-500 px-8 py-1 mr-10 text-red-500 font-medium rounded-full hover:bg-red-500 hover:text-white"

@@ -19,8 +19,7 @@ export default async function createAppointment(
     const responseData = await response.json();
 
     if (!response.ok) {
-      if (responseData.message.includes("has already made 3 appointments"))
-        alert("Each user can't have more than 3 appointment at a time");
+    
       throw new Error("Failed to create appointment");
     }
     return response;

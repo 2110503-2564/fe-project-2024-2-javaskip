@@ -45,15 +45,23 @@ export default function AddAppointmentPage() {
         console.log("aid : ", typeof aid);
         console.log("------------------------------------");
 
+        if (
+          createApptResponseData.message.includes(
+            "has already made 3 appointments"
+          )
+        ) {
+          alert("Each user can't have more than 3 appointment at a time");
+        } else {
+          alert("Successfully booked!");
+          router.push("/myBooking");
+        }
+
         // If you were using transactions, you'd handle that here
         // const createTransactionResponse = await createTransaction(
         //   session.user.token,
         //   aid
         // );
         // console.log(createTransactionResponse);
-
-        alert("Successfully booked!");
-        router.push("/myBooking");
       } catch (err) {
         console.log(err);
       }

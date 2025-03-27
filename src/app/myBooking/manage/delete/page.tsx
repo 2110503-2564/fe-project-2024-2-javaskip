@@ -28,7 +28,7 @@ export default function DeleteAppointmentPage() {
       </div>
       <div className="text-center mt-10">
         <button
-          className="bg-white border-[2px] border-emerald-500 hover:bg-emerald-500 hover:text-white px-8 py-1 mr-10 text-emerald-500 font-medium rounded-full"
+          className="bg-white border-[2px] border-red-500 hover:bg-red-500 hover:text-white px-8 py-1 mr-10 text-red-500 font-medium rounded-full"
           onClick={() => {
             router.back();
           }}
@@ -36,7 +36,7 @@ export default function DeleteAppointmentPage() {
           Cancel
         </button>
         <button
-          className="bg-white border-[2px] border-red-500 hover:bg-red-500 hover:text-white px-8 py-1 mr-10 text-red-500 font-medium rounded-full"
+          className="bg-white border-[2px] border-emerald-500 hover:bg-emerald-500 hover:text-white px-8 py-1 mr-10 text-emerald-500 font-medium rounded-full"
           onClick={submit}
         >
           Sure!

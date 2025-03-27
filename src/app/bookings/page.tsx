@@ -65,7 +65,7 @@ export default function AddAppointmentPage() {
 
   return (
     <main className="text-left mx-[20%] pb-5">
-      <div className="text-4xl font-bold mt-[8%] ">Add Appointment</div>
+      <div className="text-4xl font-bold mt-[8%] ">Add Booking</div>
       <div className="w-full my-10">
         <label className="w-auto block text-gray-700" htmlFor="name">
           Campground
@@ -82,7 +82,7 @@ export default function AddAppointmentPage() {
           id="date"
           name="date"
           placeholder="Select the date here"
-          className="bg-white border-[2px] border-gray-500 rounded-lg w-full py-2 px-4 mt-2 text-gray-700 focus:outline-none focus:border-emerald-500"
+          className="bg-white border-[2px] border-gray-500 rounded-lg w-full py-2 px-4 mt-2 text-gray-700 focus:outline-none focus:border-green-500"
           value={date}
           onChange={(e) => setDate(e.target.value)}
         ></input>
@@ -99,9 +99,10 @@ export default function AddAppointmentPage() {
           Cancel
         </button>
         <button
-          className="border-[2px] border-emerald-500 bg-emerald-500 px-10 py-1 text-white font-medium rounded-full hover:bg-white hover:text-emerald-500"
+          className="border-[2px] border-teal-500 bg-teal-600 px-10 py-1 text-white font-medium rounded-full hover:bg-white hover:text-teal-600"
           onClick={() => {
             submit();
+            router.push("/myBooking");
           }}
         >
           Book!

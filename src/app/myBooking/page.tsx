@@ -7,7 +7,7 @@ import getUserDashboard from "../../libs/getUserProfile";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import AppointmentCatalog from "@/components/AppointmentCatalog";
 
-export default async function DashbordPage() {
+export default async function MyBookingPage() {
   const session = await getServerSession(authOptions);
   if (!session || !session.user.token) return null;
 

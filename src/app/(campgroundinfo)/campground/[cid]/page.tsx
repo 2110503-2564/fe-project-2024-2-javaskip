@@ -5,7 +5,6 @@ import { getServerSession } from "next-auth";
 import getUserProfile from "@/libs/getUserProfile";
 import { authOptions } from "@/libs/authOptions";
 
-// Define correct types
 interface PageProps {
   params: { cid: string };
 }
@@ -14,7 +13,6 @@ export default async function CampgroundDetailPage({ params }: PageProps) {
   const campgroundDetail = await getCampground(params.cid);
   const session = await getServerSession(authOptions);
 
-  // Ensure session and token exist
   const profile = session?.user?.token ? await getUserProfile(session.user.token) : null;
 
   return (
@@ -59,7 +57,6 @@ export default async function CampgroundDetailPage({ params }: PageProps) {
         </div>
       </div>
 
-      {/* Admin Buttons */}
       {profile && profile.data.role === "admin" && (
         <div className="fixed bottom-28 items-center">
           <Link href={`/campground/manage/edit?id=${params.cid}&name=${campgroundDetail.data.name}`}>

@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { CircularProgress } from "@mui/material";
 import Link from "next/link";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/libs/authOptions";
 import getUserProfile from "@/libs/getUserProfile";
 
 export default async function Campground() {

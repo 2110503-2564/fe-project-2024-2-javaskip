@@ -3,7 +3,7 @@ import { Skeleton } from "@mui/material";
 import { getServerSession } from "next-auth";
 import { Suspense } from "react";
 import getUserProfile from "../../libs/getUserProfile";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "@/libs/authOptions";
 import AppointmentCatalog from "@/components/AppointmentCatalog";
 
 export default async function MyBookingPage() {

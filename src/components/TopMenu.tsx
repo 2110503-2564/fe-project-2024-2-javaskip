@@ -20,42 +20,45 @@ export default async function TopMenu() {
       </Link>
 
       <div className="ml-auto p-4 flex items-center">
-        <Link href="/campground">
-          <button className="flex items-center h-full px-2 text-white text-lg">
-            <p className=" ">Book Now</p>
-          </button>
-        </Link>
         {session ? (
-          ""
-        ) : (
-          <Link href="/register">
-            <div className="flex items-center h-full px-2 text-white text-lg">
-              Register
-            </div>
-          </Link>
-        )}
-        {session ? (
-          <Link href="/api/auth/signout">
-            <div
-              className="bg-[#FFE492] text-[#043873] font-semibold px-6 py-3 rounded-lg shadow-md 
+          <div className="flex flex-row gap-3">
+            <Link href="/campground" className="no-underline">
+              <button className="flex items-center h-full px-2 text-white text-lg">
+                <p className=" ">Book Now</p>
+              </button>
+            </Link>
+            <Link href="/myBooking" className="no-underline">
+              <button className="flex items-center h-full px-2 text-white text-lg">
+                <p className=" "> My Booking</p>
+              </button>
+            </Link>
+            <Link href="/api/auth/signout" className="no-underline">
+              <div
+                className="bg-[#FFE492] text-[#043873] font-semibold px-6 py-3 rounded-lg shadow-md 
             hover:bg-[#FFD966] transition-all duration-300 ease-in-out"
-            >
-              LogOut
-            </div>
-          </Link>
+              >
+                LogOut
+              </div>
+            </Link>
+          </div>
         ) : (
-          <Link href="/api/auth/signin">
-            <div
-              className="bg-[#FFE492] text-[#043873] font-semibold px-6 py-3 rounded-lg shadow-md 
+          <div className="flex flex-row gap-3">
+            <Link href="/register">
+              <div className="flex items-center h-full px-2 text-white text-lg">
+                Register
+              </div>
+            </Link>
+            <Link href="/api/auth/signin">
+              <div
+                className="bg-[#FFE492] text-[#043873] font-semibold px-6 py-3 rounded-lg shadow-md 
             hover:bg-[#FFD966] transition-all duration-300 ease-in-out"
-            >
-              LogIn
-            </div>
-          </Link>
+              >
+                LogIn
+              </div>
+            </Link>
+          </div>
         )}
       </div>
     </nav>
   );
 }
-
-

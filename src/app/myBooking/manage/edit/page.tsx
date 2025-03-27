@@ -1,63 +1,61 @@
 "use client";
 
-import createAppointment from "../../libs/createAppointment";
+import getAppointment from "@/libs/getAppointment";
+import getAppointments from "@/libs/getAppointments";
+import updateAppointment from "@/libs/updateAppointment";
 import CampGroundSelection from "@/components/CampGroundSelection";
+// import CurrentAppointmentShower from "@/components/CurrentAppointmentShower";
 import { useSession } from "next-auth/react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import createTransaction from "@/libs/createTransaction";
+import { AppointmentItem } from "interface";
 
-export default function AddAppointmentPage() {
+export default function EditAppointmentPage() {
   const router = useRouter();
   const { data: session } = useSession();
 
+  const urlParams = useSearchParams();
+  const id = urlParams.get("id") as string;
+  const cname = urlParams.get("name");
+
   const [date, setDate] = useState("");
-  const [appointmentID, setAppointmentID] = useState("");
 
   const [selectedCampground, setSelectedCampground] = useState<string>("");
   const handleOptionChange = (newOption: string) => {
     setSelectedCampground(newOption);
   };
+  {
+    /*
+  const [appointmentJsonReady, setAppointmentJsonReady] =
+    useState<AppointmentItem>();
+  useEffect(() => {
+    const setData = async () => {
+      const appointment = await getAppointment(id, session.user.token);
+      console.log(appointment);
+      setAppointmentJsonReady(appointment);
+    };
+    setData();
+  }, []);
+  */
+  }
 
   if (!session || !session.user.token) return null;
 
   const submit = async () => {
     console.log(selectedCampground, date);
     if (selectedCampground && date) {
-      try {
-        const createApptResponse = await createAppointment(
+      const editAppointment = async () => {
+        const response = await updateAppointment(
+          id,
           session.user.token,
           selectedCampground,
           date
         );
-        if (!createApptResponse) {
-          throw new Error("Failed to submit create Appointment form");
-        }
-
-        const createApptResponseData = await createApptResponse.json();
-        console.log(createApptResponseData);
-        console.log("------------------------------------");
-        const aid = createApptResponseData.data._id;
-        setAppointmentID(aid);
-        console.log("aid : ", typeof aid);
-        console.log("------------------------------------");
-
-        const createTransactionResponse = (await createTransaction(
-          session.user.token,
-          aid
-        )) as Response;
-        console.log(createTransactionResponse);
-
-        if (!createTransactionResponse) {
-          throw new Error("Failed to submit create Transaction");
-        }
-
-        alert("Successfully booked!");
-
-        router.push("/dashboard");
-      } catch (err) {
-        console.log(err);
-      }
+        //alert(JSON.stringify(response));
+      };
+      await editAppointment();
+      alert("Successfully update your booking!");
+      router.push("/dashboard");
     } else {
       alert("Please fill in the missing field!");
     }
@@ -65,7 +63,10 @@ export default function AddAppointmentPage() {
 
   return (
     <main className="text-left mx-[20%] pb-5">
-      <div className="text-4xl font-bold mt-[8%] ">Add Appointment</div>
+      <div className="text-4xl font-bold mt-[8%] ">
+        Edit Appointment : {cname}
+      </div>
+      {/* <CurrentAppointmentShower appointment={appointmentJsonReady} /> */}
       <div className="w-full my-10">
         <label className="w-auto block text-gray-700" htmlFor="name">
           Campground
@@ -99,12 +100,12 @@ export default function AddAppointmentPage() {
           Cancel
         </button>
         <button
-          className="border-[2px] border-emerald-500 bg-emerald-500 px-10 py-1 text-white font-medium rounded-full hover:bg-white hover:text-emerald-500"
+          className="border-[2px] border-blue-800 bg-blue-800 px-10 py-1 text-white font-medium rounded-full hover:bg-white hover:text-blue-800 hover:bg-white"
           onClick={() => {
             submit();
           }}
         >
-          Book!
+          Edit
         </button>
       </div>
     </main>

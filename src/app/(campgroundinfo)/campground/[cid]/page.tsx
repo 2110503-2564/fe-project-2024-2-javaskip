@@ -45,7 +45,7 @@ export default async function CampgroundDetailPage({
 
           {/* ปุ่มต่าง ๆ */}
           <div className="flex gap-4 flex-col">
-            {profile.data.role == "admin" ? (
+            {profile.data.role !== "admin" ? (
               <Link
                 href="/bookings"
                 className="text-center px-2 py-1 bg-[#043873] text-[#FFE492] font-semibold rounded shadow hover:bg-blue-700 transition"
